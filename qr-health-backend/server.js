@@ -2,13 +2,12 @@ import express from 'express';
 import cors from 'cors';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
-import { v2 as cloudinary } from 'cloudinary'; // ✅ Import Cloudinary
+import { v2 as cloudinary } from 'cloudinary';
 import userRoutes from './routes/userRoutes.js';
 
-// ✅ Load environment variables from .env
 dotenv.config();
 
-// ✅ Initialize Cloudinary configuration
+// ✅ Cloudinary Config
 cloudinary.config({
     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
     api_key: process.env.CLOUDINARY_API_KEY,
@@ -17,23 +16,30 @@ cloudinary.config({
 
 const app = express();
 
-// ✅ Middleware
-const allowedOrigins = ['https://qrhelper.vercel.app'];
+// ✅ Allowed Origins
+const allowedOrigins = [
+    'https://qrhelper.vercel.app', // your deployed frontend
+    'http://localhost:5173',        // Vite dev frontend
+    'http://localhost:3000'         // CRA dev frontend
+];
 
+// ✅ CORS Middleware
 app.use(cors({
     origin: function (origin, callback) {
         if (!origin || allowedOrigins.includes(origin)) {
             callback(null, true);
         } else {
+            console.error('❌ Blocked by CORS:', origin); // optional debug log
             callback(new Error('Not allowed by CORS'));
         }
     },
     credentials: true
 }));
 
-app.use(express.json()); // Parse JSON request bodies
+// ✅ JSON Parser
+app.use(express.json());
 
-// ✅ MongoDB Connection
+// ✅ MongoDB Connect
 mongoose.connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
