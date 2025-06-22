@@ -39,12 +39,11 @@ const UserForm = () => {
             scannedReports.forEach(file => data.append("scannedReports", file));
             prescriptions.forEach(file => data.append("prescriptions", file));
 
-            // ✅ Dynamic backend URL based on environment
             const BASE_URL = import.meta.env.VITE_BACKEND_URL || 'https://qrhelper.onrender.com';
             const res = await axios.post(`${BASE_URL}/api/users`, data);
             const userId = res.data.userId;
 
-            navigate(`/view/${userId}`); // ✅ Redirect to user profile page with QR
+            navigate(`/view/${userId}`);
         } catch (err) {
             console.error(err);
             alert("❌ Error saving data. Please try again.");
@@ -52,11 +51,15 @@ const UserForm = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center py-10 px-4">
-            <div className="w-full max-w-4xl bg-white rounded-2xl shadow-2xl p-8">
-                <h1 className="text-3xl font-bold text-center mb-6 text-blue-700">🩺 Digital Health Record Form</h1>
+        <div className="min-h-screen w-full bg-gradient-to-br from-blue-50 to-blue-100 flex items-center justify-center p-4 overflow-auto">
+            <div className="w-full max-w-5xl bg-white rounded-3xl shadow-2xl p-6 sm:p-10 border border-blue-100">
+                <h1 className="text-3xl font-bold text-center text-blue-700 mb-6">🩺 Digital Health Record Form</h1>
 
-                <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                    {/* 📘 Section 1: Personal Info */}
+                    <div className="col-span-full">
+                        <h2 className="text-xl font-semibold text-blue-600 text-center border-b pb-2 mb-3">👤 Personal Information</h2>
+                    </div>
                     {['name', 'age', 'gender', 'bloodGroup', 'phone', 'email', 'emergencyContact', 'address'].map((field) => (
                         <input
                             key={field}
@@ -69,6 +72,10 @@ const UserForm = () => {
                         />
                     ))}
 
+                    {/* 📕 Section 2: Medical Info */}
+                    <div className="col-span-full mt-6">
+                        <h2 className="text-xl font-semibold text-blue-600 text-center border-b pb-2 mb-3">🧬 Medical Information</h2>
+                    </div>
                     {["allergies", "chronicConditions", "medications", "pastSurgeries", "familyHistory", "mentalHealth", "vaccinations", "lastCheckup", "healthSummary"].map((field) => (
                         <textarea
                             key={field}
@@ -80,8 +87,9 @@ const UserForm = () => {
                         />
                     ))}
 
+                    {/* 📎 File Uploads */}
                     <div className="col-span-full bg-gray-100 p-4 rounded-lg border border-gray-300">
-                        <label className="block font-semibold text-gray-700 mb-2">📄 Upload Scanned Reports (PDF, JPG, PNG)</label>
+                        <label className="block font-semibold text-gray-700 mb-2">📄 Upload Scanned Reports</label>
                         <input
                             type="file"
                             multiple
@@ -102,7 +110,7 @@ const UserForm = () => {
 
                     <button
                         type="submit"
-                        className="col-span-full w-full bg-black text-black font-semibold py-3 rounded-xl shadow-md hover:bg-gray-900 hover:scale-[1.01] active:scale-[0.98] transition-all duration-200 ease-in-out"
+                        className="col-span-full w-full bg-black text-white font-semibold py-3 rounded-xl shadow-md hover:bg-gray-900 hover:scale-[1.01] active:scale-[0.98] transition-all duration-200 ease-in-out mt-4"
                     >
                         🚀 Submit & Generate QR
                     </button>

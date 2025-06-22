@@ -29,6 +29,9 @@ router.post('/', parser.fields([
     { name: 'scannedReports', maxCount: 5 },
     { name: 'prescriptions', maxCount: 5 }
 ]), async (req, res) => {
+    console.log('BODY:', req.body);
+    console.log('FILES:', req.files);
+
     try {
         const {
             name, age, gender, bloodGroup, phone, email,
