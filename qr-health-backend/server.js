@@ -18,7 +18,7 @@ const app = express();
 
 // ✅ Allowed Origins
 const allowedOrigins = [
-    'https://qrhelper-jq1d-git-main-vardhan011s-projects.vercel.app',
+    'https://https://qrhelper.vercel.app',
     'http://localhost:5173',
     'http://localhost:3000'
 ];

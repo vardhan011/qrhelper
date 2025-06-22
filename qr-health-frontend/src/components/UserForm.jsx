@@ -39,7 +39,7 @@ const UserForm = () => {
             scannedReports.forEach(file => data.append("scannedReports", file));
             prescriptions.forEach(file => data.append("prescriptions", file));
 
-            const BASE_URL = import.meta.env.VITE_BACKEND_URL || 'https://qrhelper.onrender.com';
+            const BASE_URL = import.meta.env.VITE_BACKEND_URL || 'https://qrhelp-1.onrender.com';
             const res = await axios.post(`${BASE_URL}/api/users`, data);
             const userId = res.data.userId;
 
