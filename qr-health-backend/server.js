@@ -18,7 +18,7 @@ const app = express();
 
 // ✅ Allowed Origins
 const allowedOrigins = [
-    'https://https://qrhelper.vercel.app',
+    'https://qrhelper.vercel.app',
     'http://localhost:5173',
     'http://localhost:3000'
 ];
