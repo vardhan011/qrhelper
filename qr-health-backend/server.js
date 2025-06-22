@@ -18,10 +18,19 @@ cloudinary.config({
 const app = express();
 
 // ✅ Middleware
+const allowedOrigins = ['https://qrhelper.vercel.app'];
+
 app.use(cors({
-    origin: 'https://qrhelper.vercel.app/', // 🔁 Replace with actual Vercel frontend URL
-    credentials: true,
+    origin: function (origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    credentials: true
 }));
+
 app.use(express.json()); // Parse JSON request bodies
 
 // ✅ MongoDB Connection
