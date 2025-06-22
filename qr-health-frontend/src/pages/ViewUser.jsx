@@ -9,11 +9,10 @@ const ViewUser = () => {
     const { id } = useParams();
     const [user, setUser] = useState(null);
     const qrRef = useRef(null);
-
     useEffect(() => {
         const fetchUser = async () => {
             try {
-                const BASE_URL = import.meta.env.VITE_BACKEND_URL;
+                const BASE_URL = import.meta.env.VITE_BACKEND_URL || 'https://qrhealth.onrender.com';
                 const res = await axios.get(`${BASE_URL}/api/users/${id}`);
                 setUser(res.data);
             } catch (err) {
@@ -22,6 +21,7 @@ const ViewUser = () => {
         };
         fetchUser();
     }, [id]);
+
 
 
     const handleDownloadQR = () => {
