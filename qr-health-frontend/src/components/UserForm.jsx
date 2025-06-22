@@ -39,14 +39,15 @@ const UserForm = () => {
             scannedReports.forEach(file => data.append("scannedReports", file));
             prescriptions.forEach(file => data.append("prescriptions", file));
 
-            const res = await axios.post("http://localhost:5000/api/users", data);
+            // ✅ Dynamic backend URL based on environment
+            const BASE_URL = import.meta.env.VITE_BACKEND_URL || 'https://qrhelper.onrender.com';
+            const res = await axios.post(`${BASE_URL}/api/users`, data);
             const userId = res.data.userId;
 
-            navigate(`/view/${userId}`); // ✅ Redirect to the QR/profile page
-
+            navigate(`/view/${userId}`); // ✅ Redirect to user profile page with QR
         } catch (err) {
             console.error(err);
-            alert("Error saving data");
+            alert("❌ Error saving data. Please try again.");
         }
     };
 
