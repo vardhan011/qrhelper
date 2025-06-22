@@ -18,7 +18,7 @@ const app = express();
 
 // ✅ Allowed Origins
 const allowedOrigins = [
-    'https://qrhelper.vercel.app', // your deployed frontend
+    'https://qrhelper-jq1d.vercel.app/', // your deployed frontend
     'http://localhost:5173',        // Vite dev frontend
     'http://localhost:3000'         // CRA dev frontend
 ];
