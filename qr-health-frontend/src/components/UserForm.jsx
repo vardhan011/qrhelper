@@ -101,7 +101,7 @@ const UserForm = () => {
 
                     <button
                         type="submit"
-                        className="col-span-full w-full bg-black text-white font-semibold py-3 rounded-xl shadow-md hover:bg-gray-900 hover:scale-[1.01] active:scale-[0.98] transition-all duration-200 ease-in-out"
+                        className="col-span-full w-full bg-black text-black font-semibold py-3 rounded-xl shadow-md hover:bg-gray-900 hover:scale-[1.01] active:scale-[0.98] transition-all duration-200 ease-in-out"
                     >
                         🚀 Submit & Generate QR
                     </button>

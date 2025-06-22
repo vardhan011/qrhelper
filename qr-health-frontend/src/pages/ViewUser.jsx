@@ -94,7 +94,8 @@ const ViewUser = () => {
                 <div className="mt-10 flex flex-col items-center">
                     <h3 className="text-xl font-bold mb-2">📱 QR Code</h3>
                     <div ref={qrRef} className="bg-white p-4 rounded-lg shadow-md">
-                        <QRCode value={`https://your-frontend.vercel.app/view/${user._id}`}
+                        <QRCode value={`https://qrhelper.vercel.app/view/${user._id}`}
+
                             size={128} />
                     </div>
                     <p className="text-sm text-gray-500 mt-2">Scan to view this profile</p>
