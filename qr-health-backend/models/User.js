@@ -19,8 +19,8 @@ const userSchema = new mongoose.Schema({
     lastCheckup: Date,
     healthSummary: String,
 
-    scannedReports: [String],  // URLs to files on Cloudinary
-    prescriptions: [String],   // URLs to files on Cloudinary
+    scannedReports: [String],
+    prescriptions: [String],
 
 }, { timestamps: true });
 

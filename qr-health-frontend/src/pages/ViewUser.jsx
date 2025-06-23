@@ -101,7 +101,7 @@ const ViewUser = () => {
                     </div>
                     <p className="text-sm text-gray-500 mt-2">Scan to view this profile</p>
 
-                    {/* ✅ Download QR Button */}
+                    {/* Download QR Button */}
                     <button
                         onClick={handleDownloadQR}
                         className="mt-4 bg-black text-white px-4 py-2 rounded-md hover:bg-gray-800 transition"

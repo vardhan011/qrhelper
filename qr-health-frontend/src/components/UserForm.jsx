@@ -46,7 +46,7 @@ const UserForm = () => {
             navigate(`/view/${userId}`);
         } catch (err) {
             console.error(err);
-            alert("❌ Error saving data. Please try again.");
+            alert("Error saving data. Please try again.");
         }
     };
 
@@ -56,7 +56,7 @@ const UserForm = () => {
                 <h1 className="text-3xl font-bold text-center text-blue-700 mb-6">🩺 Digital Health Record Form</h1>
 
                 <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-5">
-                    {/* 📘 Section 1: Personal Info */}
+                    {/* Section 1: Personal Info */}
                     <div className="col-span-full">
                         <h2 className="text-xl font-semibold text-blue-600 text-center border-b pb-2 mb-3">👤 Personal Information</h2>
                     </div>
@@ -72,7 +72,7 @@ const UserForm = () => {
                         />
                     ))}
 
-                    {/* 📕 Section 2: Medical Info */}
+                    {/* Section 2: Medical Info */}
                     <div className="col-span-full mt-6">
                         <h2 className="text-xl font-semibold text-blue-600 text-center border-b pb-2 mb-3">🧬 Medical Information</h2>
                     </div>
@@ -87,7 +87,7 @@ const UserForm = () => {
                         />
                     ))}
 
-                    {/* 📎 File Uploads */}
+                    {/* File Uploads */}
                     <div className="col-span-full bg-gray-100 p-4 rounded-lg border border-gray-300">
                         <label className="block font-semibold text-gray-700 mb-2">📄 Upload Scanned Reports</label>
                         <input
