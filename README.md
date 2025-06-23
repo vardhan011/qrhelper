@@ -16,7 +16,7 @@ This is a full-stack MERN application for collecting and accessing personal and 
 
 ## 🚀 Getting Started
 
-### Run Frontend
+## Run Frontend
 ```bash
 cd client
 npm install
